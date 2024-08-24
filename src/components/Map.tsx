@@ -19,20 +19,17 @@ const Map: React.FC<MapProps> = ({ origin = { lat: 0, lng: 0 }, destination = { 
 
     useEffect(() => {
         if (mapRef.current) {
-            // Clear existing markers
             markers.current.forEach(marker => {
                 marker.setMap(null);
             });
             markers.current = [];
 
-            // Create DOM elements for marker content
             const originContent = document.createElement('div');
             originContent.innerHTML = '<div>Origin</div>';
 
             const destinationContent = document.createElement('div');
             destinationContent.innerHTML = '<div>Destination</div>';
 
-            // Add markers for origin and destination
             if (origin) {
                 const originMarker = new google.maps.Marker({
                     position: origin,
