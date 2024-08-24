@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Container, Box, Typography } from '@mui/material';
 import AutocompleteInput from './components/AutocompleteInput';
-import { haversineDistance } from './utils/calculateDistance';
+import { haversineDistance } from './utils/calculateNauticalDistance';
 import Map from './components/Map';
 
 interface Airport {
