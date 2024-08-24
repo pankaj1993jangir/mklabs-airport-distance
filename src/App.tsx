@@ -32,7 +32,11 @@ const App: React.FC = () => {
   const handleDestinationChange = (airport: Airport | null) => {
     setDestination(airport);
     setDistance(null);
-  };
+  };  
+
+  React.useEffect(() => {
+    calculateDistance();
+  }, [origin, destination]);
 
   return (
     <Container>
@@ -40,9 +44,6 @@ const App: React.FC = () => {
         <Typography variant="h4" gutterBottom>Airport Distance Calculator</Typography>
         <AutocompleteInput label="Origin Airport" onSelect={handleOriginChange} />
         <AutocompleteInput label="Destination Airport" onSelect={handleDestinationChange} />
-        <Box mt={2}>
-          <button onClick={calculateDistance}>Calculate Distance</button>
-        </Box>
         {distance !== null && (
           <Box mt={2}>
             <Typography variant="h6">Distance: {distance.toFixed(2)} nautical miles</Typography>
