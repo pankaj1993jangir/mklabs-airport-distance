@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useCallback } from 'react';
 import { Container, Box, Typography } from '@mui/material';
 import AutocompleteInput from './components/AutocompleteInput';
@@ -48,8 +49,8 @@ const App: React.FC = () => {
           <AutocompleteInput label="Destination Airport" onSelect={handleDestinationChange} />
         </Box>
         {distance !== null && (
-          <Box mt={2} style={{ opacity: distance !== null ? 1 : 0, transition: 'opacity 1.5s' }}>
-            <Typography variant="h6">Distance: <strong>{distance.toFixed(2)} nautical miles</strong></Typography>
+          <Box mt={2}>
+            <Typography variant="h6">Distance: {distance.toFixed(2)} nautical miles</Typography>
           </Box>
         )}
         <Box mt={2}>

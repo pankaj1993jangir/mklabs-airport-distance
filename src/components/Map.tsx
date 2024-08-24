@@ -1,4 +1,3 @@
-// src/components/Map.tsx
 import React, { useRef, useEffect } from 'react';
 import { GoogleMap, Polyline, useLoadScript } from '@react-google-maps/api';
 
@@ -14,6 +13,9 @@ const Map: React.FC<MapProps> = ({ origin = { lat: 0, lng: 0 }, destination = { 
 
     const mapRef = useRef<google.maps.Map | null>(null);
     const markers = useRef<google.maps.Marker[]>([]);
+    
+    // Default center coordinates over the United States
+    const defaultCenter = { lat: 39.8283, lng: -98.5795 };
 
     useEffect(() => {
         if (mapRef.current) {
@@ -56,8 +58,8 @@ const Map: React.FC<MapProps> = ({ origin = { lat: 0, lng: 0 }, destination = { 
         <GoogleMap
             zoom={5}
             center={{
-                lat: ((origin?.lat || 0) + (destination?.lat || 0)) / 2,
-                lng: ((origin?.lng || 0) + (destination?.lng || 0)) / 2,
+                lat: ((origin?.lat || defaultCenter.lat) + (destination?.lat || defaultCenter.lat)) / 2,
+                lng: ((origin?.lng || defaultCenter.lng) + (destination?.lng || defaultCenter.lng)) / 2,
             }}
             mapContainerStyle={{ width: '100%', height: '600px' }}
             onLoad={(map) => {
