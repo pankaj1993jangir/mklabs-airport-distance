@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Box, Typography } from '@mui/material';
 import AutocompleteInput from './components/AutocompleteInput';
 import { haversineDistance } from './utils/calculateNauticalDistance';
@@ -17,26 +17,26 @@ const App: React.FC = () => {
   const [destination, setDestination] = useState<Airport | null>(null);
   const [distance, setDistance] = useState<number | null>(null);
 
+  const handleOriginChange = (airport: Airport | null) => {
+    setOrigin(airport);
+  };
+
+  const handleDestinationChange = (airport: Airport | null) => {
+    setDestination(airport);
+  };  
+
   const calculateDistance = () => {
+    /*console.log('Origin:', origin);
+    console.log('Destination:', destination);*/
     if (origin && destination) {
       const dist = haversineDistance(origin.lat, origin.lng, destination.lat, destination.lng);
       setDistance(dist);
     }
   };
 
-  const handleOriginChange = (airport: Airport | null) => {
-    setOrigin(airport);
-    setDistance(null);
-  };
-
-  const handleDestinationChange = (airport: Airport | null) => {
-    setDestination(airport);
-    setDistance(null);
-  };  
-
-  React.useEffect(() => {
+  useEffect(() => {
     calculateDistance();
-  }, [origin, destination]);
+  }, [origin, destination, calculateDistance]);
 
   return (
     <Container>
