@@ -41,15 +41,21 @@ const App: React.FC = () => {
   return (
     <Container>
       <Box mt={5}>
-        <Typography variant="h4" gutterBottom>Airport Distance Calculator</Typography>
-        <AutocompleteInput label="Origin Airport" onSelect={handleOriginChange} />
-        <AutocompleteInput label="Destination Airport" onSelect={handleDestinationChange} />
+        <Typography variant="h4" gutterBottom>US Airport Distance Calculator</Typography>
+        <Box mt={2}>
+          <AutocompleteInput label="Origin Airport" onSelect={handleOriginChange} />
+        </Box>
+        <Box mt={2}>
+          <AutocompleteInput label="Destination Airport" onSelect={handleDestinationChange} />
+        </Box>
         {distance !== null && (
           <Box mt={2}>
             <Typography variant="h6">Distance: {distance.toFixed(2)} nautical miles</Typography>
           </Box>
         )}
-        <Map origin={origin} destination={destination} />
+        <Box mt={2}>
+          <Map origin={origin} destination={destination} />
+        </Box>
       </Box>
     </Container>
   );

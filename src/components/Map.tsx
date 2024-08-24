@@ -59,7 +59,7 @@ const Map: React.FC<MapProps> = ({ origin = { lat: 0, lng: 0 }, destination = { 
                 lat: ((origin?.lat || 0) + (destination?.lat || 0)) / 2,
                 lng: ((origin?.lng || 0) + (destination?.lng || 0)) / 2,
             }}
-            mapContainerStyle={{ width: '100%', height: '400px' }}
+            mapContainerStyle={{ width: '100%', height: '600px' }}
             onLoad={(map) => {
                 mapRef.current = map;
             }}
