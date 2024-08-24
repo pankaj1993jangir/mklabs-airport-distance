@@ -20,7 +20,6 @@ const AutocompleteInput: React.FC<AutocompleteInputProps> = ({ label, onSelect }
 
   useEffect(() => {
     const fetchAirports = async () => {
-      // Replace with your API endpoint or static JSON
       const response = await axios.get('/us-airports.json');
       setAirports(response.data);
       setLoading(false);
